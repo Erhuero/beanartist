@@ -4,6 +4,10 @@ public class Coordonnees {
 	public double ABSCISSE_PAR_DEFAUT;
 	public double ORDONNEE_PAR_DEFAUT;
 	
+	public Coordonnees() {
+		
+	}
+
 	public Coordonnees(double abscisse, double ordonnee) {
 		
 		this.ABSCISSE_PAR_DEFAUT = abscisse;
@@ -21,6 +25,7 @@ public class Coordonnees {
 	public void setAbscisse(double abscisse) {
 		ABSCISSE_PAR_DEFAUT = abscisse;
 	}
+	
 
 	public void setOrdonnee(double ordonnee) {
 		ORDONNEE_PAR_DEFAUT = ordonnee;
