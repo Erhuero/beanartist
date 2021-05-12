@@ -1,8 +1,10 @@
 package fr.eseo.poo.projet.artiste.modele;
 
+
 public class Coordonnees {
 	public double ABSCISSE_PAR_DEFAUT;
 	public double ORDONNEE_PAR_DEFAUT;
+	
 	
 	public Coordonnees() {
 		
