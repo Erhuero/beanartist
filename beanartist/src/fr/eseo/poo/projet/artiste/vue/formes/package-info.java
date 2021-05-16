@@ -1,1 +1,0 @@
-package fr.eseo.poo.projet.artiste.vue.formes;
