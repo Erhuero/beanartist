@@ -1,4 +1,4 @@
-package fr.eseo.poo.projet.artiste.modele.forme;
+package fr.eseo.poo.projet.artiste.modele.formes;
 
 public class Ligne extends Forme {
 	
