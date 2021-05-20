@@ -1,7 +1,7 @@
 package src.fr.eseo.poo.projet.artiste.modele.formes;
 import src.fr.eseo.poo.projet.artiste.modele.Coordonnees;
 
-public class Forme {
+public abstract class Forme {
 	
 	public double LARGEUR_PAR_DEFAUT;
 	public double HAUTEUR_PAR_DEFAUT;
@@ -73,12 +73,8 @@ public class Forme {
 		
 	}
 	
-	public double aire() {
-		return HAUTEUR_PAR_DEFAUT * LARGEUR_PAR_DEFAUT;
-	}
+	public abstract double aire();
 	
-	public double perimetre() {
-		return HAUTEUR_PAR_DEFAUT * LARGEUR_PAR_DEFAUT;		
-	}
+	public abstract double perimetre();
 
 }
