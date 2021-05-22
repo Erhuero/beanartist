@@ -1,7 +1,7 @@
 package src.fr.eseo.poo.projet.artiste.modele.formes;
 
 import src.fr.eseo.poo.projet.artiste.modele.Coordonnees;
-import src.fr.eseo.poo.projet.artiste.modele.formes.Forme;
+import src.fr.eseo.poo.projet.artiste.modele.forme.Forme;
 
 public class Ligne extends Forme {
 	
