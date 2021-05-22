@@ -41,8 +41,6 @@ public class Ligne extends Forme {
 	 public String toString(){
 		 return null;
 	 }
-	
-	
 	 
 	@Override
 	public double aire() {//les methodes abstraites doivent être implementes dans une classe concrete qui a des methodes concretes
