@@ -1,4 +1,4 @@
-package src.fr.eseo.poo.projet.artiste.modele.forme;
+package src.fr.eseo.poo.projet.artiste.modele.formes;
 import src.fr.eseo.poo.projet.artiste.modele.Coordonnees;
 
 public abstract class Forme {
