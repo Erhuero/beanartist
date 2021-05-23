@@ -7,7 +7,9 @@ public abstract class Forme {
 	public double HAUTEUR_PAR_DEFAUT;
 	private Coordonnees position;
 			
-	public Forme() {}
+	public Forme() {
+		
+	}
 
 	public Forme(double largeur, double hauteur) {
 		
@@ -38,39 +40,43 @@ public abstract class Forme {
 	}
 	
 	public double getCadreMinX() {
-		return HAUTEUR_PAR_DEFAUT;		
+		//retourne par defaut le coin superieur gauche
+		return  position.getOrdonnee();
 	}	
 	
 	public double getCadreMinY() {
-		return HAUTEUR_PAR_DEFAUT;		
+		//retourne par defaut le coin superieur gauche
+		return position.getAbscisse();		
 	}
 	
 	public double getCadreMaxX() {
-		return HAUTEUR_PAR_DEFAUT;		
+		return position.getOrdonnee() + this.LARGEUR_PAR_DEFAUT;
 	}	
 
 	public double getCadreMaxY() {
-		return HAUTEUR_PAR_DEFAUT;	
+		return position.getOrdonnee() + this.HAUTEUR_PAR_DEFAUT;
 	}
 	
 	public void setPosition(Coordonnees position){
-			
+		this.position = position;
 	}
 	
 	public void setLargeur(double largeur){
-		
+		this.position.setAbscisse(largeur);
 	}
 	
 	public void setHauteur(double hauteur){
-			
+		this.position.setOrdonnee(hauteur);
 	}
 	
 	public void deplacerDe(double deltaX, double deltaY){
-			
+		this.setLargeur(position.getOrdonnee() + deltaX);
+		this.setHauteur(position.getAbscisse() + deltaY);
 	}
 	
 	public void deplacerVers(double nouvelleAbscisse, double nouvelleOrdonnee){
-		
+		this.setLargeur(nouvelleAbscisse);
+		this.setHauteur(nouvelleOrdonnee);
 	}
 	
 	public abstract double aire();

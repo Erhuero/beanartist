@@ -22,12 +22,16 @@ public class Ligne extends Forme {
 		 
 	 }
 	 
-	 public Coordonnees getC1(){
-		 return null;
+	 public Coordonnees getC1(){//premier point
+		 return new Coordonnees(this.getCadreMinY(), this.getCadreMinY());
 	 }
 	 
-	 public Coordonnees getC2(){
-		 return null;
+	 public Coordonnees getC2(){//second point
+		 return new Coordonnees(this.getCadreMaxX(), this.getCadreMinY());
+	 }
+	 
+	 public void setPosition(Coordonnees position){
+		 this.deplacerVers(position.ABSCISSE_PAR_DEFAUT, position.ORDONNEE_PAR_DEFAUT);
 	 }
 	 
 	 public void setC1(Coordonnees coordonnees){
