@@ -1,5 +1,5 @@
 package src.fr.eseo.poo.projet.artiste.modele;
-
+import java.text.DecimalFormat;
 import src.fr.eseo.poo.projet.artiste.modele.Coordonnees;
 
 public class Coordonnees {
@@ -35,13 +35,13 @@ public class Coordonnees {
 	}
 	
 	public void deplacerDe(double deltaX, double deltaY) {
-		this.ABSCISSE_PAR_DEFAUT = deltaX;
-		this.ORDONNEE_PAR_DEFAUT = deltaY;
+		this.setAbscisse(deltaX);
+		this.setOrdonnee(deltaY);
 	}
 	
 	public void deplacerVers(double nouvelleAbscisse, double nouvelleOrdonnee) {
-		this.ABSCISSE_PAR_DEFAUT = nouvelleAbscisse;
-		this.ORDONNEE_PAR_DEFAUT = nouvelleOrdonnee;
+		this.setAbscisse(this.getAbscisse() + nouvelleAbscisse);
+		this.setOrdonnee(this.getOrdonnee() + nouvelleOrdonnee);
 	}
 	
 	public double distanceVers(Coordonnees autreCoordonnees) {
@@ -53,8 +53,9 @@ public class Coordonnees {
 		
 	} 
 	
+	@Override
 	public String toString() {
-		return null;
+		return "(" + getAbscisse() + " , " + getOrdonnee() + ")";
 	}
 	
 	
