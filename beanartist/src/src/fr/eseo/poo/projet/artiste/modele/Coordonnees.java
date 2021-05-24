@@ -45,11 +45,20 @@ public class Coordonnees {
 	}
 	
 	public double distanceVers(Coordonnees autreCoordonnees) {
-		return ABSCISSE_PAR_DEFAUT;
+		return Math.sqrt(((Math.pow(getAbscisse() - getAbscisse(), 2)) + ((Math.pow(getOrdonnee() - getOrdonnee(), 2)))));
 	}
 	
 	public double angleVers(Coordonnees autreCoordonnees) {
-		return ABSCISSE_PAR_DEFAUT;
+		
+		double angle = Math.asin((this.getOrdonnee() - autreCoordonnees.getOrdonnee()) / this.distanceVers(autreCoordonnees));
+		
+		if(this.getAbscisse() > autreCoordonnees.getAbscisse()) {
+			angle = (this.getOrdonnee() > autreCoordonnees.getOrdonnee()) ? Math.PI - angle : -Math.PI - angle;
+				
+		
+		}
+		
+		return angle;
 		
 	} 
 	
