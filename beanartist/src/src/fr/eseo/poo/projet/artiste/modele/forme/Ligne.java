@@ -44,7 +44,7 @@ public class Ligne extends Forme {
 	 }
 	 
 	 public String toString(){
-		 return null;
+		 return "[Ligne] c1 : " + "("+ getC1() +")" + "c2 : " + "("+ getC2()+ ")" + " longueur : ";
 	 }
 	 
 	@Override

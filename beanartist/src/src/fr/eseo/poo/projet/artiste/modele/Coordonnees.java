@@ -59,7 +59,6 @@ public class Coordonnees {
 		}
 		
 		return angle;
-		
 	} 
 	
 	@Override

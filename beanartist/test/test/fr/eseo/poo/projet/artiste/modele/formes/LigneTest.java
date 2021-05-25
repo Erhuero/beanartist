@@ -13,9 +13,10 @@ public class LigneTest {
 	public void testSetC1() {
 		Coordonnees c = new Coordonnees(10, 246);
 		Ligne l = new Ligne();
+		
 		l.setC1(c);
 		assertEquals("Probleme setC1 : ", c, l.getC1());
-		assertEquals("Probleme setC1, c2 : ", new Coordonnees(100, 150), l.getC1());
+		assertEquals("Probleme setC1, C2 : ", new Coordonnees(100, 150), l.getC1());
 	}
 
 }
