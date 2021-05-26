@@ -1,1 +1,0 @@
-package test.fr.eseo.poo.projet.artiste.controleur.actions;
