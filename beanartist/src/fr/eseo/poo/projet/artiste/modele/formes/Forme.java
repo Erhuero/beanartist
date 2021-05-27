@@ -3,8 +3,8 @@ import fr.eseo.poo.projet.artiste.modele.Coordonnees;
 
 public abstract class Forme {
 	
-	public double LARGEUR_PAR_DEFAUT;
-	public double HAUTEUR_PAR_DEFAUT;
+	public static final double LARGEUR_PAR_DEFAUT = 0;
+	public static final double HAUTEUR_PAR_DEFAUT = 0;
 	private Coordonnees position;
 			
 	public Forme() {
@@ -13,8 +13,8 @@ public abstract class Forme {
 
 	public Forme(double largeur, double hauteur) {
 		
-		this.LARGEUR_PAR_DEFAUT = largeur;
-		this.HAUTEUR_PAR_DEFAUT = hauteur;
+		largeur = largeur;
+		hauteur = hauteur;
 	}
 	
 	public Forme(Coordonnees position) {
@@ -23,8 +23,8 @@ public abstract class Forme {
 	
 	public Forme(Coordonnees position, double largeur, double hauteur) {
 		this.position = position;
-		this.LARGEUR_PAR_DEFAUT = largeur;
-		this.HAUTEUR_PAR_DEFAUT = hauteur;
+		largeur = largeur;
+		hauteur = hauteur;
 	}
 	
 	public Coordonnees getPosition() {
@@ -32,11 +32,12 @@ public abstract class Forme {
 	}
 	
 	public double getLargeur() {
-		return this.LARGEUR_PAR_DEFAUT=LARGEUR_PAR_DEFAUT; 
+		return 0;
+		
 	}
 	
 	public double getHauteur() {
-		return this.HAUTEUR_PAR_DEFAUT=HAUTEUR_PAR_DEFAUT;
+		return 0;
 	}
 	
 	public double getCadreMinX() {

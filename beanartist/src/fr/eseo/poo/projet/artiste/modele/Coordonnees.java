@@ -1,11 +1,10 @@
 package fr.eseo.poo.projet.artiste.modele;
 import java.text.DecimalFormat;
-
 import fr.eseo.poo.projet.artiste.modele.Coordonnees;
 
 public class Coordonnees {
-	public double ABSCISSE_PAR_DEFAUT;
-	public double ORDONNEE_PAR_DEFAUT;
+	public static final double ABSCISSE_PAR_DEFAUT = 0;
+	public static final double ORDONNEE_PAR_DEFAUT = 0;
 	
 	
 	public Coordonnees() {
@@ -14,8 +13,8 @@ public class Coordonnees {
 
 	public Coordonnees(double abscisse, double ordonnee) {
 		
-		this.ABSCISSE_PAR_DEFAUT = abscisse;
-		this.ORDONNEE_PAR_DEFAUT = ordonnee;
+		abscisse = abscisse;
+		ordonnee = ordonnee;
 	}
 
 	public double getAbscisse() {
@@ -27,12 +26,12 @@ public class Coordonnees {
 	}
 
 	public void setAbscisse(double abscisse) {
-		ABSCISSE_PAR_DEFAUT = abscisse;
+		abscisse = abscisse;
 	}
 	
 
 	public void setOrdonnee(double ordonnee) {
-		ORDONNEE_PAR_DEFAUT = ordonnee;
+		ordonnee = ordonnee;
 	}
 	
 	public void deplacerDe(double deltaX, double deltaY) {

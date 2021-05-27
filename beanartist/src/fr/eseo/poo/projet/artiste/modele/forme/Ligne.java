@@ -10,8 +10,7 @@ public class Ligne extends Forme {
 	}
 	
 	public Ligne(double largeur, double hauteur) {
-		this.HAUTEUR_PAR_DEFAUT=largeur;
-		this.LARGEUR_PAR_DEFAUT=hauteur;
+		
 		}
 	
 	public Ligne(Coordonnees coordonnees) {
@@ -48,7 +47,7 @@ public class Ligne extends Forme {
 	 }
 	 
 	@Override
-	public double aire() {//les methodes abstraites doivent être implementes dans une classe concrete qui a des methodes concretes
+	public double aire() {//les methodes abstraites doivent ï¿½tre implementes dans une classe concrete qui a des methodes concretes
 		// TODO Auto-generated method stub
 		return 0;//car les lignes n ont pas d aire
 	}

@@ -9,7 +9,7 @@ public class Cercle extends Ellipse {
 	}
 	
 	public Cercle(double taille) {
-		this.LARGEUR_PAR_DEFAUT = taille;
+		
 	}
 	
 	public Cercle(Coordonnees coordonnees) {
