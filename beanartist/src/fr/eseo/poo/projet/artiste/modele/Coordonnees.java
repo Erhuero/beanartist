@@ -3,60 +3,70 @@ import java.text.DecimalFormat;
 import fr.eseo.poo.projet.artiste.modele.Coordonnees;
 
 public class Coordonnees {
+	
 	public static final double ABSCISSE_PAR_DEFAUT = 0;
 	public static final double ORDONNEE_PAR_DEFAUT = 0;
-	
-	
+	private double abscisse, ordonnee;
+
+	public Coordonnees(double abscisse, double ordonnee) {
+		
+		this.setAbscisse(abscisse);
+		this.setOrdonnee(ordonnee);	
+	}
+
 	public Coordonnees() {
 		
 	}
 
-	public Coordonnees(double abscisse, double ordonnee) {
-		
-		abscisse = abscisse;
-		ordonnee = ordonnee;
-	}
-
 	public double getAbscisse() {
-		return ABSCISSE_PAR_DEFAUT;
+		return abscisse;
 	}
 	
 	public double getOrdonnee() {
-		return ORDONNEE_PAR_DEFAUT;
+		return ordonnee;
 	}
 
 	public void setAbscisse(double abscisse) {
-		abscisse = abscisse;
+		this.abscisse = abscisse;
 	}
 	
-
 	public void setOrdonnee(double ordonnee) {
-		ordonnee = ordonnee;
+		this.ordonnee = ordonnee;
 	}
 	
 	public void deplacerDe(double deltaX, double deltaY) {
-		this.setAbscisse(deltaX);
-		this.setOrdonnee(deltaY);
+		
+		
+		this.setAbscisse(this.getAbscisse() + deltaX);
+		this.setOrdonnee(this.getOrdonnee() + deltaY);
+		
 	}
 	
 	public void deplacerVers(double nouvelleAbscisse, double nouvelleOrdonnee) {
-		this.setAbscisse(this.getAbscisse() + nouvelleAbscisse);
-		this.setOrdonnee(this.getOrdonnee() + nouvelleOrdonnee);
+		this.setAbscisse(nouvelleAbscisse);
+		this.setOrdonnee(nouvelleOrdonnee);
 	}
 	
 	public double distanceVers(Coordonnees autreCoordonnees) {
+		
 		return Math.sqrt(((Math.pow(getAbscisse() - getAbscisse(), 2)) + ((Math.pow(getOrdonnee() - getOrdonnee(), 2)))));
+	
 	}
 	
 	public double angleVers(Coordonnees autreCoordonnees) {
 		
+		double angle;
+		
+		/*
 		double angle = Math.asin((this.getOrdonnee() - autreCoordonnees.getOrdonnee()) / this.distanceVers(autreCoordonnees));
 		
 		if(this.getAbscisse() > autreCoordonnees.getAbscisse()) {
 			angle = (this.getOrdonnee() > autreCoordonnees.getOrdonnee()) ? Math.PI - angle : -Math.PI - angle;
 		}
+		*/
 		
 		return angle;
+	
 	} 
 	
 	@Override
@@ -64,14 +74,5 @@ public class Coordonnees {
 		return "(" + getAbscisse() + " , " + getOrdonnee() + ")";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

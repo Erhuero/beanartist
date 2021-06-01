@@ -7,6 +7,7 @@ public class Ligne extends Forme {
 	
 	public Ligne() {
 		
+		
 	}
 	
 	public Ligne(double largeur, double hauteur) {

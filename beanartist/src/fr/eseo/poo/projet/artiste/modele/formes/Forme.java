@@ -12,19 +12,19 @@ public abstract class Forme {
 	}
 
 	public Forme(double largeur, double hauteur) {
+		this.setLargeur(largeur);
+		this.setHauteur(hauteur);
 		
-		largeur = largeur;
-		hauteur = hauteur;
 	}
 	
 	public Forme(Coordonnees position) {
-		this.position = position;
+		this(position, LARGEUR_PAR_DEFAUT, HAUTEUR_PAR_DEFAUT);
 	}
 	
 	public Forme(Coordonnees position, double largeur, double hauteur) {
-		this.position = position;
-		largeur = largeur;
-		hauteur = hauteur;
+		this.setPosition(position);
+		this.setLargeur(largeur);
+		this.setHauteur(hauteur);
 	}
 	
 	public Coordonnees getPosition() {
@@ -33,7 +33,6 @@ public abstract class Forme {
 	
 	public double getLargeur() {
 		return 0;
-		
 	}
 	
 	public double getHauteur() {
