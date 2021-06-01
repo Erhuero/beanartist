@@ -57,6 +57,12 @@ public class Coordonnees {
 		
 		double angle;
 		
+		if(autreCoordonnees.getAbscisse() >= abscisse && autreCoordonnees.getOrdonnee() <= ordonnee) {
+			
+			angle = -(Math.acos((autreCoordonnees.abscisse - abscisse) / distanceVers(autreCoordonnees)));
+			
+		}
+		
 		/*
 		double angle = Math.asin((this.getOrdonnee() - autreCoordonnees.getOrdonnee()) / this.distanceVers(autreCoordonnees));
 		
