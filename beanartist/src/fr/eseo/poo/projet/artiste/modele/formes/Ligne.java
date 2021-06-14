@@ -1,33 +1,31 @@
-package fr.eseo.poo.projet.artiste.modele.forme;
+package fr.eseo.poo.projet.artiste.modele.formes;
 
 import fr.eseo.poo.projet.artiste.modele.Coordonnees;
-import fr.eseo.poo.projet.artiste.modele.formes.Forme;
 
 public class Ligne extends Forme {
 	
 	public Ligne() {
-		
-		
+		this(new Coordonnees());
 	}
 	
 	public Ligne(double largeur, double hauteur) {
-		
+		super(largeur, hauteur);
 		}
 	
 	public Ligne(Coordonnees coordonnees) {
-		
+		super(coordonnees);
 	}
 	
 	 public Ligne(Coordonnees coordonnees, double largeur, double hauteur) {
-		 
+		 super(coordonnees, largeur, hauteur);
 	 }
 	 
 	 public Coordonnees getC1(){//premier point
-		 return new Coordonnees(this.getCadreMinY(), this.getCadreMinY());
+		return super.getPosition();
 	 }
 	 
 	 public Coordonnees getC2(){//second point
-		 return new Coordonnees(this.getCadreMaxX(), this.getCadreMinY());
+		 return new Coordonnees(this.getC1().getAbscisse() + super.getLargeur(), this.getC1().getOrdonnee() + super.getHauteur());
 	 }
 	 
 	 public void setPosition(Coordonnees position){
@@ -39,8 +37,10 @@ public class Ligne extends Forme {
 	 }
 	
 	 public void setC2(Coordonnees coordonnees2) {
-		 super.setLargeur(coordonnees2.getAbscisse());
-		 super.setHauteur(coordonnees2.getOrdonnee());		 
+		 
+		 //super.getC1().getAbscisse() + super.getLargeur(), this.getC1().getOrdonnee() + super.getHauteur());
+		 //super.setLargeur(coordonnees2.getAbscisse());
+		 //super.setHauteur(coordonnees2.getOrdonnee());		 
 	 }
 	 
 	 public String toString(){

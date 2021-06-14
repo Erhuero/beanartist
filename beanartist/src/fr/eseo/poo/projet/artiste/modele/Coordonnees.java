@@ -1,5 +1,8 @@
 package fr.eseo.poo.projet.artiste.modele;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
 import fr.eseo.poo.projet.artiste.modele.Coordonnees;
 
 public class Coordonnees {
@@ -48,37 +51,64 @@ public class Coordonnees {
 	}
 	
 	public double distanceVers(Coordonnees autreCoordonnees) {
-		
-		return Math.sqrt(((Math.pow(getAbscisse() - getAbscisse(), 2)) + ((Math.pow(getOrdonnee() - getOrdonnee(), 2)))));
+		//difference entre les nouvelles coordonnees contre les coordonnees de cette classe
+		return Math.sqrt(((Math.pow(autreCoordonnees.getAbscisse() - this.getAbscisse(), 2)) + 
+				((Math.pow(autreCoordonnees.getOrdonnee() - this.getOrdonnee(), 2)))));
 	
 	}
 	
 	public double angleVers(Coordonnees autreCoordonnees) {
 		
-		double angle;
-		
-		if(autreCoordonnees.getAbscisse() >= abscisse && autreCoordonnees.getOrdonnee() <= ordonnee) {
-			
-			angle = -(Math.acos((autreCoordonnees.abscisse - abscisse) / distanceVers(autreCoordonnees)));
-			
-		}
-		
+		double angle = Math.asin((autreCoordonnees.getOrdonnee() - this.getOrdonnee()) / this.distanceVers(autreCoordonnees));
 		/*
-		double angle = Math.asin((this.getOrdonnee() - autreCoordonnees.getOrdonnee()) / this.distanceVers(autreCoordonnees));
-		
-		if(this.getAbscisse() > autreCoordonnees.getAbscisse()) {
-			angle = (this.getOrdonnee() > autreCoordonnees.getOrdonnee()) ? Math.PI - angle : -Math.PI - angle;
+		if(autreCoordonnees.getAbscisse() >= abscisse && autreCoordonnees.getOrdonnee() <= ordonnee) {			
+			angle = -(Math.acos((autreCoordonnees.abscisse - abscisse) / distanceVers(autreCoordonnees)));			
+		}
+		else if(autreCoordonnees.getAbscisse() <= abscisse && autreCoordonnees.getOrdonnee() <= ordonnee) {
+			//ajout 90 avec +PI/2
+			angle = ((Math.PI / 2)  + Math.acos((ordonnee - autreCoordonnees.getOrdonnee()) / distanceVers(autreCoordonnees)));					
+		}		
+		else if(autreCoordonnees.getAbscisse() <= abscisse && autreCoordonnees.getOrdonnee() >= ordonnee) {					
+			angle = (Math.PI / 2)  + ((autreCoordonnees.getOrdonnee() - ordonnee) / distanceVers(autreCoordonnees));					
+		}		
+		else {			
+			angle = Math.acos((autreCoordonnees.getAbscisse() - abscisse) / distanceVers(autreCoordonnees));
 		}
 		*/
 		
+		if(this.getAbscisse() > autreCoordonnees.getAbscisse())
+			angle = (this.getOrdonnee() > autreCoordonnees.getOrdonnee()) ? -Math.PI - angle : Math.PI - angle;
 		return angle;
-	
-	} 
-	
+	}
+	/*
 	@Override
 	public String toString() {
-		return "(" + getAbscisse() + " , " + getOrdonnee() + ")";
+		DecimalFormat formeDecimale = new DecimalFormat("0,0#");
+		
+		//formeDecimale.setMinimumIntegerDigits(1);
+		//formeDecimale.setMaximumFractionDigits(2);
+		
+		//DecimalFormatSymbols dfs = new DecimalFormatSymbols();
+		//dfs.setDecimalSeparator('.');
+		//formeDecimale.setDecimalFormatSymbols(dfs);
+		
+			return "(" + formeDecimale.format(this.getAbscisse()) + " , " + formeDecimale.format(this.getOrdonnee()) + ")";
+	}
+	*/
+
+	@Override
+	public String toString() {
+		DecimalFormat formeDecimale = new DecimalFormat("0.0#");
+		//return "Coordonnees [abscisse=" + abscisse + ", ordonnee=" + ordonnee + "]";
+		return "(" + formeDecimale.format(this.getAbscisse()) + " , " + formeDecimale.format(this.getOrdonnee()) + ")";
 	}
 	
-
+	/*
+	public static void main(String[] args) {
+		Coordonnees coor = new Coordonnees(2, 6);
+		System.out.println(coor);
+	}
+*/
+	
 }
+

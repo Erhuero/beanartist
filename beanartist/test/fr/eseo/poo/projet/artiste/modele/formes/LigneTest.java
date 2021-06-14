@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import fr.eseo.poo.projet.artiste.modele.Coordonnees;
-import fr.eseo.poo.projet.artiste.modele.forme.Ligne;
 
 public class LigneTest {
 
