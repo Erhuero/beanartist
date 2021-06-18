@@ -58,28 +58,51 @@ public class Coordonnees {
 	}
 	
 	public double angleVers(Coordonnees autreCoordonnees) {
-		
-		double angle = Math.asin((autreCoordonnees.getOrdonnee() - this.getOrdonnee()) / this.distanceVers(autreCoordonnees));
 		/*
-		if(autreCoordonnees.getAbscisse() >= abscisse && autreCoordonnees.getOrdonnee() <= ordonnee) {			
-			angle = -(Math.acos((autreCoordonnees.abscisse - abscisse) / distanceVers(autreCoordonnees)));			
-		}
-		else if(autreCoordonnees.getAbscisse() <= abscisse && autreCoordonnees.getOrdonnee() <= ordonnee) {
-			//ajout 90 avec +PI/2
-			angle = ((Math.PI / 2)  + Math.acos((ordonnee - autreCoordonnees.getOrdonnee()) / distanceVers(autreCoordonnees)));					
-		}		
-		else if(autreCoordonnees.getAbscisse() <= abscisse && autreCoordonnees.getOrdonnee() >= ordonnee) {					
-			angle = (Math.PI / 2)  + ((autreCoordonnees.getOrdonnee() - ordonnee) / distanceVers(autreCoordonnees));					
-		}		
-		else {			
-			angle = Math.acos((autreCoordonnees.getAbscisse() - abscisse) / distanceVers(autreCoordonnees));
-		}
-		*/
+		double angle = Math.atan2((autreCoordonnees.getOrdonnee() - this.getOrdonnee()) , (autreCoordonnees.getAbscisse() - this.getAbscisse()));
 		
-		if(this.getAbscisse() > autreCoordonnees.getAbscisse())
+		if (this.getAbscisse() > autreCoordonnees.getAbscisse())
 			angle = (this.getOrdonnee() > autreCoordonnees.getOrdonnee()) ? -Math.PI - angle : Math.PI - angle;
 		return angle;
+		
+		
+		double angle = 0;
+		
+		if(autreCoordonnees.getAbscisse() <=this.getAbscisse() && autreCoordonnees.getOrdonnee()<=this.getOrdonnee()) {
+			angle = -(Math.atan((autreCoordonnees.getAbscisse() - getAbscisse()) / (autreCoordonnees.getOrdonnee() - getOrdonnee())) + Math.PI/2);
+		}
+		
+		else if(autreCoordonnees.getAbscisse() >= this.getAbscisse() && autreCoordonnees.getOrdonnee() <= this.getOrdonnee()) {
+			angle = -(Math.atan((autreCoordonnees.getOrdonnee() - getOrdonnee()) / (autreCoordonnees.getAbscisse() - getAbscisse())));
+		}
+		
+		else if(autreCoordonnees.getAbscisse() <= this.getAbscisse() && autreCoordonnees.getOrdonnee() >= this.getOrdonnee() ) {
+			angle = (Math.atan((autreCoordonnees.getAbscisse() - getAbscisse()) / (autreCoordonnees.getOrdonnee() - getOrdonnee())) + Math.PI/2);
+		}
+		
+		else if(autreCoordonnees.getAbscisse() >= this.getAbscisse() && autreCoordonnees.getOrdonnee() >= 0) {
+			angle = (Math.atan((autreCoordonnees.getOrdonnee() - getOrdonnee()) / (autreCoordonnees.getAbscisse() - getAbscisse())));
+		}
+		
+		return angle;
 	}
+	*/
+        double angle;
+        if ((autreCoordonnees.getAbscisse() >= getAbscisse()) && (autreCoordonnees.getOrdonnee() <= getOrdonnee())) {
+            angle = -(Math.acos((autreCoordonnees.getAbscisse() - getAbscisse()) / distanceVers(autreCoordonnees)));
+        }
+        else if ((autreCoordonnees.getAbscisse() <= getAbscisse()) && (autreCoordonnees.getOrdonnee() <= getOrdonnee())) {
+            angle = -((Math.PI / 2) + Math.acos((getOrdonnee() - autreCoordonnees.getOrdonnee()) / distanceVers(autreCoordonnees)));
+        }
+        else if ((autreCoordonnees.getAbscisse() <= getAbscisse()) && (autreCoordonnees.getOrdonnee() >= getOrdonnee())) {
+            angle = (Math.PI / 2) + Math.acos(((autreCoordonnees.getOrdonnee() - getOrdonnee()) / distanceVers(autreCoordonnees)));
+        }
+        else {
+            angle = Math.acos((autreCoordonnees.getAbscisse() - getAbscisse()) / distanceVers(autreCoordonnees));
+        }
+        return angle;
+    }
+	
 	/*
 	@Override
 	public String toString() {
@@ -102,13 +125,11 @@ public class Coordonnees {
 		//return "Coordonnees [abscisse=" + abscisse + ", ordonnee=" + ordonnee + "]";
 		return "(" + formeDecimale.format(this.getAbscisse()) + " , " + formeDecimale.format(this.getOrdonnee()) + ")";
 	}
-	
 	/*
 	public static void main(String[] args) {
 		Coordonnees coor = new Coordonnees(2, 6);
 		System.out.println(coor);
 	}
 */
-	
 }
 

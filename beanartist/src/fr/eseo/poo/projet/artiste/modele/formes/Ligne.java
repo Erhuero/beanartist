@@ -1,5 +1,7 @@
 package fr.eseo.poo.projet.artiste.modele.formes;
 
+import java.text.DecimalFormat;
+
 import fr.eseo.poo.projet.artiste.modele.Coordonnees;
 
 public class Ligne extends Forme {
@@ -7,6 +9,7 @@ public class Ligne extends Forme {
 	public Ligne() {
 		this(new Coordonnees());
 	}
+	
 	
 	public Ligne(double largeur, double hauteur) {
 		super(largeur, hauteur);
@@ -29,27 +32,49 @@ public class Ligne extends Forme {
 	 }
 	 
 	 public void setPosition(Coordonnees position){
-		 this.deplacerVers(position.ABSCISSE_PAR_DEFAUT, position.ORDONNEE_PAR_DEFAUT);
+		 super.setPosition(position);
 	 }
 	 
-	 public void setC1(Coordonnees coordonnees1){
-		super.setPosition(coordonnees1);
+	 public void setC1(Coordonnees coordonnees){
+		super.setLargeur(this.getC2().getAbscisse() - coordonnees.getAbscisse());
+		super.setHauteur(this.getC2().getOrdonnee() - coordonnees.getOrdonnee());
+		this.setPosition(coordonnees);
 	 }
 	
-	 public void setC2(Coordonnees coordonnees2) {
-		 
+	 public void setC2(Coordonnees coordonnees) {//nouvelle coordonnee moins abscisse initiale
+		
 		 //super.getC1().getAbscisse() + super.getLargeur(), this.getC1().getOrdonnee() + super.getHauteur());
-		 //super.setLargeur(coordonnees2.getAbscisse());
-		 //super.setHauteur(coordonnees2.getOrdonnee());		 
+		 super.setLargeur(coordonnees.getAbscisse() - this.getC1().getAbscisse());
+		 super.setHauteur(coordonnees.getOrdonnee() - this.getC1().getOrdonnee());
 	 }
-	 
-	 public String toString(){
-		 return "[Ligne] c1 : " + "("+ getC1() +")" + "c2 : " + "("+ getC2()+ ")" + " longueur : " + perimetre() + " angle " + this.getC1().angleVers(getC2());//met en radian
-	 }
-	 
+	
+	@Override
+	public String toString() {
+		DecimalFormat formeDecimale = new DecimalFormat("0.0#");
+		double angle = this.getC1().angleVers(this.getC2());
+		
+		if(angle < 0)
+			angle += 2 * Math.PI;
+		
+		return "[ " + this.getClass().getSimpleName() + " ] c1 : "  + this.getC1() 
+				+ " c2 : " + this.getC2()
+				+ " longueur : " + formeDecimale.format(this.perimetre()) + " angle : " 
+				+ formeDecimale.format(Math.toDegrees(angle)) + " °";
+	}
+
+	public static void main(String[] args) {
+		Ligne lg = new Ligne(new Coordonnees(1, 2));
+		Ligne lg2 = new Ligne(new Coordonnees(3, 6), 5, 5);
+		System.out.println(lg.getC2());		
+		System.out.println(lg);
+		System.out.println("--------------------------------");
+		System.out.println(lg2.getC2());
+		System.out.println(lg2);
+	}
+	
 	@Override
 	public double aire() {//les methodes abstraites doivent �tre implementes dans une classe concrete qui a des methodes concretes
-		// TODO Auto-generated method stub
+		
 		return 0;//car les lignes n ont pas d aire
 	}
 

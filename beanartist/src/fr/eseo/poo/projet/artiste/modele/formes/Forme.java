@@ -6,20 +6,7 @@ public abstract class Forme {
 	public static final double LARGEUR_PAR_DEFAUT = 0;
 	public static final double HAUTEUR_PAR_DEFAUT = 0;
 	private Coordonnees position;
-			
-	public Forme() {
-		
-	}
-
-	public Forme(double largeur, double hauteur) {
-		this.setLargeur(largeur);
-		this.setHauteur(hauteur);
-		
-	}
-	
-	public Forme(Coordonnees position) {
-		this(position, LARGEUR_PAR_DEFAUT, HAUTEUR_PAR_DEFAUT);
-	}
+	private double largeur, hauteur;
 	
 	public Forme(Coordonnees position, double largeur, double hauteur) {
 		this.setPosition(position);
@@ -27,56 +14,89 @@ public abstract class Forme {
 		this.setHauteur(hauteur);
 	}
 	
+	public Forme(double abscisse, double ordonnee, double largeur, double hauteur) {
+		this(new Coordonnees(abscisse, ordonnee), largeur, hauteur);
+	}
+	
+	public Forme(double largeur, double hauteur) {
+		this(new Coordonnees(), largeur, hauteur);
+	}
+	
+	public Forme(Coordonnees position) {
+		this(position, LARGEUR_PAR_DEFAUT, HAUTEUR_PAR_DEFAUT);
+	}
+			
+	public Forme() {
+		this(new Coordonnees());
+	}
+		
 	public Coordonnees getPosition() {
 		return this.position;
-	}
-	
-	public double getLargeur() {
-		return 0;
-	}
-	
-	public double getHauteur() {
-		return 0;
-	}
-	
-	public double getCadreMinX() {
-		//retourne par defaut le coin superieur gauche
-		return  position.getOrdonnee();
-	}	
-	
-	public double getCadreMinY() {
-		//retourne par defaut le coin superieur gauche
-		return position.getAbscisse();		
-	}
-	
-	public double getCadreMaxX() {
-		return position.getOrdonnee() + this.LARGEUR_PAR_DEFAUT;
-	}	
-
-	public double getCadreMaxY() {
-		return position.getOrdonnee() + this.HAUTEUR_PAR_DEFAUT;
 	}
 	
 	public void setPosition(Coordonnees position){
 		this.position = position;
 	}
 	
+	public double getLargeur() {
+		return this.largeur;
+	}
+	
 	public void setLargeur(double largeur){
-		this.position.setAbscisse(largeur);
+		this.largeur = largeur;
+	}
+	
+	public double getHauteur() {
+		return this.hauteur;
 	}
 	
 	public void setHauteur(double hauteur){
-		this.position.setOrdonnee(hauteur);
+		this.hauteur = hauteur;
+	}
+	
+	
+	public double getCadreMaxX() {
+		//return this.getAbscisse() + this.getLargeur();
+				
+		/*
+		double maxX = this.getPosition().getAbscisse() - this.getAbscisse();
+	    return (maxX < this.getPosition().getAbscisse()) ? this.getPosition().getAbscisse() : maxX;
+		*/
+		Coordonnees coordonnees = getPosition();
+		return coordonnees.getAbscisse()+getLargeur();
+	}
+	
+	public double getCadreMaxY() {
+		//return this.getOrdonnee() + this.getHauteur();
+		Coordonnees coordonnees = getPosition();
+		return coordonnees.getOrdonnee() + getHauteur();
+	}
+
+	public double getCadreMinX() {
+		//retourne par defaut le coin superieur gauche
+		//return this.getAbscisse();
+		/*
+		double minX = this.getPosition().getAbscisse() + this.getAbscisse();
+	       
+        return (minX > this.getPosition().getAbscisse()) ? this.getPosition().getAbscisse() : minX;
+	*/
+		Coordonnees coordonnees = getPosition();
+		return coordonnees.getAbscisse();
+	}	
+		
+	public double getCadreMinY() {
+		//retourne par defaut le coin superieur gauche
+		//return this.getOrdonnee();
+		Coordonnees coordonnees = getPosition();
+		return coordonnees.getOrdonnee();		
 	}
 	
 	public void deplacerDe(double deltaX, double deltaY){
-		this.setLargeur(position.getOrdonnee() + deltaX);
-		this.setHauteur(position.getAbscisse() + deltaY);
+		this.getPosition().deplacerDe(deltaX, deltaY); ;
 	}
 	
 	public void deplacerVers(double nouvelleAbscisse, double nouvelleOrdonnee){
-		this.setLargeur(nouvelleAbscisse);
-		this.setHauteur(nouvelleOrdonnee);
+		this.getPosition().deplacerVers(nouvelleAbscisse, nouvelleOrdonnee);
 	}
 	
 	public abstract double aire();
