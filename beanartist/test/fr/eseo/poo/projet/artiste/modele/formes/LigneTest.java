@@ -5,9 +5,34 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import fr.eseo.poo.projet.artiste.modele.Coordonnees;
+import fr.eseo.poo.projet.artiste.modele.formes.Forme;
 
 public class LigneTest {
 
+	@Test
+	
+	public void testConstructeurSansParametres() {
+		Ligne ligne = new Ligne();
+		assertEquals("Probleme C1 : ", new Coordonnees(0,0), ligne.getC1());
+		assertEquals("Probleme C2 : ", new Coordonnees(100,125), ligne.getC2());
+	}
+	
+	@Test	
+	public void testConstructeurUnParametre() {
+		Ligne ligne = new Ligne(130,105);
+		assertEquals("Probleme C1 : ", new Coordonnees(0,0), ligne.getC1());
+		assertEquals("Probleme C2 : ", new Coordonnees(130,105), ligne.getC2());
+	}
+	
+	@Test	
+	public void testConstructeurCoordonneesLargeurHauteur() {
+		Coordonnees coordonnees = new Coordonnees(25,10);
+		Ligne ligne = new Ligne(coordonnees);
+		//Forme forme = new Forme(12,15);
+		
+		//assertEquals("Largeur : ", 100, coordonnees.getLargeur());
+	}
+	
 	@Test
 	public void testSetC1() {
 		Coordonnees c = new Coordonnees(10, 246);

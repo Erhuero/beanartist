@@ -3,8 +3,8 @@ import fr.eseo.poo.projet.artiste.modele.Coordonnees;
 
 public abstract class Forme {
 	
-	public static final double LARGEUR_PAR_DEFAUT = 0;
-	public static final double HAUTEUR_PAR_DEFAUT = 0;
+	public static final double LARGEUR_PAR_DEFAUT = 100;
+	public static final double HAUTEUR_PAR_DEFAUT = 125;
 	private Coordonnees position;
 	private double largeur, hauteur;
 	
@@ -53,23 +53,37 @@ public abstract class Forme {
 	public void setHauteur(double hauteur){
 		this.hauteur = hauteur;
 	}
-	
-	
+
+
 	public double getCadreMaxX() {
 		//return this.getAbscisse() + this.getLargeur();
 				
-		/*
-		double maxX = this.getPosition().getAbscisse() - this.getAbscisse();
+		
+		double maxX = this.getPosition().getAbscisse() + this.getLargeur();
+		
 	    return (maxX < this.getPosition().getAbscisse()) ? this.getPosition().getAbscisse() : maxX;
+		
+		//Coordonnees coordonnees = getPosition();
+		//return coordonnees.getAbscisse()+getLargeur();
+		/*
+		double maxX = getLargeur() + this.largeur;
+		if (maxX < this.getLargeur()) {
+			maxX = this.getLargeur();
+		}
+		return maxX;
 		*/
-		Coordonnees coordonnees = getPosition();
-		return coordonnees.getAbscisse()+getLargeur();
+		//Coordonnees coordonnees = getPosition();
+		//return coordonnees.getAbscisse()+getLargeur();
 	}
 	
 	public double getCadreMaxY() {
 		//return this.getOrdonnee() + this.getHauteur();
-		Coordonnees coordonnees = getPosition();
-		return coordonnees.getOrdonnee() + getHauteur();
+		double maxY = this.getPosition().getOrdonnee() + this.getHauteur();
+	       
+        return (maxY < this.getPosition().getOrdonnee()) ? this.getPosition().getOrdonnee() : maxY;
+        
+		//Coordonnees coordonnees = getPosition();
+		//return coordonnees.getOrdonnee() + getHauteur();
 	}
 
 	public double getCadreMinX() {
@@ -80,15 +94,23 @@ public abstract class Forme {
 	       
         return (minX > this.getPosition().getAbscisse()) ? this.getPosition().getAbscisse() : minX;
 	*/
-		Coordonnees coordonnees = getPosition();
-		return coordonnees.getAbscisse();
+		//Coordonnees coordonnees = getPosition();
+		//return coordonnees.getAbscisse();
+	
+		double minX = this.getPosition().getAbscisse() + this.getLargeur();
+		
+	    return (minX > this.getPosition().getAbscisse()) ? this.getPosition().getAbscisse() : minX;
 	}	
 		
 	public double getCadreMinY() {
 		//retourne par defaut le coin superieur gauche
 		//return this.getOrdonnee();
-		Coordonnees coordonnees = getPosition();
-		return coordonnees.getOrdonnee();		
+		//Coordonnees coordonnees = getPosition();
+		//return coordonnees.getOrdonnee();
+		
+		double minY = this.getPosition().getOrdonnee() + this.getHauteur();
+	       
+        return (minY > this.getPosition().getOrdonnee()) ? this.getPosition().getOrdonnee() : minY;
 	}
 	
 	public void deplacerDe(double deltaX, double deltaY){
@@ -103,5 +125,6 @@ public abstract class Forme {
 	
 	public abstract double perimetre();
 	
+	public abstract boolean contient(Coordonnees coordonnees);
 
 }

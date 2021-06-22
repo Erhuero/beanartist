@@ -6,10 +6,11 @@ import fr.eseo.poo.projet.artiste.modele.Coordonnees;
 
 public class Ligne extends Forme {
 	
+	public static final double EPSILON = 0.01;
+	
 	public Ligne() {
 		this(new Coordonnees());
 	}
-	
 	
 	public Ligne(double largeur, double hauteur) {
 		super(largeur, hauteur);
@@ -56,10 +57,10 @@ public class Ligne extends Forme {
 		if(angle < 0)
 			angle += 2 * Math.PI;
 		
-		return "[ " + this.getClass().getSimpleName() + " ] c1 : "  + this.getC1() 
+		return "[" + this.getClass().getSimpleName() + "]"+ " c1 : "  + this.getC1() 
 				+ " c2 : " + this.getC2()
 				+ " longueur : " + formeDecimale.format(this.perimetre()) + " angle : " 
-				+ formeDecimale.format(Math.toDegrees(angle)) + " °";
+				+ formeDecimale.format(Math.toDegrees(angle)) + "°";
 	}
 
 	public static void main(String[] args) {
@@ -74,15 +75,24 @@ public class Ligne extends Forme {
 	
 	@Override
 	public double aire() {//les methodes abstraites doivent �tre implementes dans une classe concrete qui a des methodes concretes
-		
 		return 0;//car les lignes n ont pas d aire
 	}
 
 	@Override
-	public double perimetre() {		
+	public double perimetre() {	
 		//return Math.sqrt(((Math.pow(coordonnees2.getAbscisse() - coordonnees1.getAbscisse(), 2)) + ((Math.pow(coordonnees2.getOrdonnee() - coordonnees1.getOrdonnee(), 2)))));
-		return Math.floor(Math.sqrt(Math.pow(super.getLargeur(), 2) + Math.pow(super.getHauteur(), 2)) * 100) / 100;
-	}	
+		//return Math.floor(Math.sqrt(Math.pow(super.getLargeur(), 2) + Math.pow(super.getHauteur(), 2)) * 100) / 100;
+		return Math.sqrt(Math.pow(super.getLargeur(), 2) + Math.pow(super.getHauteur(), 2));
+	}
+
+	@Override
+	public boolean contient(Coordonnees coordonnees) {
+		return 	((this.getC1().distanceVers(coordonnees) + this.getC2().distanceVers(coordonnees))-
+				this.getC1().distanceVers(this.getC2())) <= EPSILON;
+	}
+	
+	
+	
 }
 
 
